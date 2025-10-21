@@ -1,10 +1,15 @@
 package org.pluralsight;
 
 public class Employee {
+
     private String employeeId;
+
     private String name;
+
     private String department;
+
     private double payRate;
+
     private double hoursWorked;
 
     private Double startTime = null;
@@ -25,9 +30,11 @@ public class Employee {
         if (startTime == null) {
             return;
         }
-        double worked = time - startTime;
-        if (worked > 0) {
-            hoursWorked += worked;
+
+        double workedHours = time - startTime;
+
+        if (workedHours > 0) {
+            hoursWorked += workedHours;
         }
         startTime = null;
     }
