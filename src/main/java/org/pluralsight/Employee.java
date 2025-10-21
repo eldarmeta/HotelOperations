@@ -3,15 +3,10 @@ package org.pluralsight;
 public class Employee {
 
     private String employeeId;
-
     private String name;
-
     private String department;
-
     private double payRate;
-
     private double hoursWorked;
-
     private Double startTime = null;
 
     public Employee(String employeeId, String name, String department, double payRate) {
@@ -27,16 +22,23 @@ public class Employee {
     }
 
     public void punchOut(double time) {
-        if (startTime == null) {
-            return;
-        }
+        if (startTime == null) return;
 
         double workedHours = time - startTime;
-
         if (workedHours > 0) {
             hoursWorked += workedHours;
         }
         startTime = null;
+    }
+
+    public void punchTimeCard(double time) {
+        if (startTime == null) {
+            startTime = time;
+        } else {
+            double worked = time - startTime;
+            if (worked > 0) hoursWorked += worked;
+            startTime = null;
+        }
     }
 
     public double getHoursWorked() {
@@ -44,13 +46,11 @@ public class Employee {
     }
 
     public double getRegularHours() {
-        if (hoursWorked <= 40) return hoursWorked;
-        return 40;
+        return hoursWorked <= 40 ? hoursWorked : 40;
     }
 
     public double getOvertimeHours() {
-        if (hoursWorked > 40) return hoursWorked - 40;
-        return 0;
+        return hoursWorked > 40 ? hoursWorked - 40 : 0;
     }
 
     public double getTotalPay() {
