@@ -36,5 +36,28 @@ public class Main {
         System.out.println("regular     = " + eldar.getRegularHours());
         System.out.println("overtime    = " + eldar.getOvertimeHours());
         System.out.println("totalPay    = " + eldar.getTotalPay());
+
+
+        System.out.println("\n  OVERTIME EXAMPLE  ");
+
+        Employee aldoz = new Employee("ID3110", "Aldoz", "Housekeeping", 20.0);
+
+        aldoz.punchIn(8.0);
+        aldoz.punchOut(18.0);
+        aldoz.punchIn(8.0);
+        aldoz.punchOut(18.0);
+        aldoz.punchIn(8.0);
+        aldoz.punchOut(18.0);
+        aldoz.punchIn(8.0);
+        aldoz.punchOut(18.0);
+
+        aldoz.punchIn(8.0);
+        aldoz.punchOut(13.0);
+
+        System.out.println("hoursWorked = " + aldoz.getHoursWorked());   // 45
+        System.out.println("regular     = " + aldoz.getRegularHours());  // 40
+        System.out.println("overtime    = " + aldoz.getOvertimeHours()); // 5
+        System.out.println("totalPay    = " + aldoz.getTotalPay());      // 40*20 + 5*(20*1.5) = 800 + 150 = 950
+
     }
 }
