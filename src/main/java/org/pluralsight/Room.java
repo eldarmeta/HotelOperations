@@ -1,10 +1,10 @@
 package org.pluralsight;
 
 public class Room {
-    private final int numberOfBeds;
-    private final double price;
-    private final boolean occupied;
-    private final boolean dirty;
+    private int numberOfBeds;
+    private double price;
+    private boolean occupied;
+    private boolean dirty;
 
     public Room(int numberOfBeds, double price, boolean occupied, boolean dirty) {
         this.numberOfBeds = numberOfBeds;
@@ -19,4 +19,19 @@ public class Room {
     public boolean isDirty() { return dirty; }
 
     public boolean isAvailable() { return !dirty && !occupied; }
+
+    public void checkIn() {
+        if (!isAvailable()) return; // не пускаем, если недоступен
+        occupied = true;
+        dirty = true;
+    }
+
+    public void checkOut() {
+        if (!occupied) return; // уже пустой
+        occupied = false;
+    }
+
+    public void cleanRoom() {
+        dirty = false;
+    }
 }
